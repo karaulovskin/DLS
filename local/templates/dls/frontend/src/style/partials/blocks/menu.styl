@@ -1,0 +1,69 @@
+.menu
+  width 100%
+  height 100%
+  transform: translateY(-100%);
+  background bg-menu
+  transition transform 1s cubic-bezier(.75,0,.25,1)
+
+  &.is-opend
+    transform: translateY(0%);
+
+.menu__list
+  display flex
+  flex-direction column
+  justify-content center
+  height 100%
+
+.menu__item
+
+  &:hover
+    .menu__link
+      opacity 1
+
+  &.active
+    .menu__link
+      opacity 1
+      &:before
+        display: block
+
+.menu__link
+  position: relative
+  display block
+  height 6vh
+  padding-left 25%
+  line-height 6vh
+  font-size 28px
+  color white
+  opacity .5
+  transition .15
+
+  &:before
+    content ''
+    display none
+    position: absolute
+    top 50%
+    left 100px
+    width 160px
+    height 1px
+    background white
+    transition .15
+
+  +below(w1280)
+    &:before
+      width 120px
+  +below(w1024)
+    &:before
+      left 80px
+      width 100px
+  +below(w840)
+    &:before
+      left 60px
+      width 80px
+  +below(w600)
+    &:before
+      left 40px
+      width 60px
+  +below(w480)
+    &:before
+      left 30px
+      width 40px

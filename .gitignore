@@ -1,0 +1,22 @@
+.idea
+.vscode
+/upload
+/html
+
+# игнорируем папку битрикс
+bitrix/*
+
+# исключаем оттуда папку php_interface и файл .settings.php
+
+!bitrix/php_interface/
+!bitrix/.settings.php
+
+# игнорируем папку assets
+
+local/templates/**/frontend/assets
+
+# игнорируем папки пакетных менеджеров
+
+local/templates/**/frontend/bower_components
+local/templates/**/frontend/node_modules
+local/templates/**/frontend/node_modules library root

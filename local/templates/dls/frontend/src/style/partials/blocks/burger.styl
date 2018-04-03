@@ -1,0 +1,59 @@
+.burger-over
+  display: inline-block
+  top 70px
+  left 100px
+
+  +below(w1024)
+      left 80px
+  +below(w840)
+      left 60px
+  +below(w600)
+      left 40px
+  +below(w480)
+      left 30px
+
+  &.is-closed
+    .burger__icon
+      transform rotate(90deg)
+
+  &.is-closed,
+  &:hover
+    .burger__icon-bar--1,
+    .burger__icon-bar--3
+      transform translateX(0)
+
+  &:hover
+    &.is-closed
+      .burger__icon
+        transform rotate(0deg)
+
+.burger
+  display inline-block
+
+.burger__icon
+  position: absolute
+  width 40px
+  height 40px
+  transition .3s
+
+.burger__icon-bar
+  position: absolute
+  top 10px
+  left 19px
+  width 1px
+  height 20px
+  background white
+  transition .15s
+
+.burger__icon-bar--1
+  transform translateX(-7px)
+
+.burger__icon-bar--3
+  transform translateX(7px)
+
+.burger__text
+  position: absolute
+  padding-left 40px
+  line-height 40px
+  font-size 12px
+  color #fff

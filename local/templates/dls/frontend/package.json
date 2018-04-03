@@ -1,0 +1,35 @@
+{
+  "name": "new-project",
+  "version": "1.0.0",
+  "description": "",
+  "author": "name surname",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-preset-env": "^1.6.0",
+    "bower": "^1.8.0",
+    "browser-sync": "^2.17.3",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-imagemin": "^3.0.3",
+    "gulp-pug": "^3.3.0",
+    "gulp-rigger": "^0.5.8",
+    "gulp-sourcemaps": "^2.2.0",
+    "gulp-stylus": "^2.6.0",
+    "gulp-svg-sprites": "^4.1.1",
+    "gulp-uglify": "^2.0.0",
+    "gulp-watch": "^4.3.10",
+    "rimraf": "^2.5.4",
+    "rupture": "^0.6.2"
+  },
+  "dependencies": {
+    "imagemin-pngquant": "^5.0.0",
+    "jquery": "^3.3.1",
+    "normalize.css": "^7.0.0",
+    "svg4everybody": "^2.1.8"
+  },
+  "scripts": {
+    "install": "npm i && bower i",
+    "build": "gulp"
+  }
+}
