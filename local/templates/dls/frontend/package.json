@@ -29,7 +29,7 @@
     "svg4everybody": "^2.1.8"
   },
   "scripts": {
-    "install": "npm i && bower i",
+    "install": "npm i",
     "build": "gulp"
   }
 }
