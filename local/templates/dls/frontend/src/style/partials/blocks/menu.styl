@@ -1,18 +1,35 @@
 .menu
+  position fixed
   width 100%
   height 100%
-  transform: translateY(100%);
+  transform translateY(-100%)
   background bg-menu
+  overflow hidden
   transition transform 1s cubic-bezier(.75,0,.25,1)
 
   &.is-opend
-    transform: translateY(0%);
+    transform translateY(0)
+    .menu__wrapp
+      transform translateY(0)
+    .menu__lift
+      transform translateY(0)
+    .menu__list
+      display block
 
-.menu__list
+.menu__wrapp
+  width 100%
+  height 100%
+  transform translateY(100%)
+  transition: transform 1s cubic-bezier(0.75, 0, 0.25, 1);
+
+.menu__lift
   display flex
   flex-direction column
   justify-content center
-  height 100%
+  width: 100%;
+  height: 100%;
+  transform translateY(-10%)
+  transition: transform 1s cubic-bezier(0.75, 0, 0.25, 1);
 
 .menu__item
 
