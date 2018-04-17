@@ -66,6 +66,7 @@ var svgSprite = function () {
 var animate = {
     init:function () {
         this.menu();
+        this.greet();
     },
 
     menu:function () {
@@ -73,7 +74,9 @@ var animate = {
             burger    = $('.js-burger'),
             slideshow = $('.slideshow');
 
-        $('.js-burger').on('click', function() {
+        $('.js-burger').on('click', function (e) {
+            e.preventDefault();
+
             if(!menu.hasClass('is-opend')) {
                 menu.addClass('is-opend');
                 burger.addClass('is-closed');
@@ -82,6 +85,33 @@ var animate = {
                 menu.removeClass('is-opend');
                 burger.removeClass('is-closed');
                 slideshow.removeClass('is-down');
+            }
+        });
+    },
+
+    greet:function () {
+        var animated = $('.is-animated'),
+            greet    = $('.greet'),
+            greetGo  = $('.greet-go'),
+            logo     = $('.logo');
+
+        $('.greet-go').on('click', function (e) {
+            e.preventDefault();
+            console.log('+');
+
+            if(!greet.hasClass('step-3')) {
+                greet.addClass('step-3');
+                // greetGo.hide();
+            }
+        });
+
+        $('.logo').on('click', function (e) {
+            e.preventDefault();
+            console.log('+');
+
+            if(greet.hasClass('step-3')) {
+                greet.removeClass('step-3');
+                // greetGo.hide();
             }
         });
     }
