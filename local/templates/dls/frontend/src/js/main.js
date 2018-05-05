@@ -1,5 +1,10 @@
 'use strict';
 
+$(function () {
+    svgSprite();
+    animate.init();
+});
+
 var svgSprite = function () {
     ;( function( window, document )
     {
@@ -67,6 +72,7 @@ var animate = {
     init:function () {
         this.menu();
         this.greet();
+        this.carousel();
     },
 
     menu:function () {
@@ -93,11 +99,13 @@ var animate = {
         var animated = $('.is-animated'),
             greet    = $('.greet'),
             greetGo  = $('.greet-go'),
-            logo     = $('.logo');
+            logo     = $('.logo'),
+            menu      = $('.js-menu'),
+            burger    = $('.js-burger'),
+            slideshow = $('.slideshow');
 
         $('.greet-go').on('click', function (e) {
             e.preventDefault();
-            console.log('+');
 
             if(!greet.hasClass('step-3')) {
                 greet.addClass('step-3');
@@ -107,17 +115,40 @@ var animate = {
 
         $('.logo').on('click', function (e) {
             e.preventDefault();
-            console.log('+');
 
             if(greet.hasClass('step-3')) {
                 greet.removeClass('step-3');
                 // greetGo.hide();
             }
+            if(menu.hasClass('is-opend')) {
+                menu.removeClass('is-opend');
+                burger.removeClass('is-closed');
+                slideshow.removeClass('is-down');
+            }
+        });
+    },
+
+    carousel:function () {
+        var title      = $('.title'),
+            titleItem  = title.find('.title__item'),
+            titleWidth  = 0;
+
+        titleItem.each(function () {
+            titleWidth+=$(this).width();
+        });
+        title.width(titleWidth);
+
+        var next = $('.s-arrow--next'),
+            prev = $('.s-arrow--prev');
+
+        next.on('click', function (e) {
+            e.preventDefault();
+            console.log('next');
+        });
+
+        prev.on('click', function (e) {
+            e.preventDefault();
+            console.log('prev');
         });
     }
 };
-
-$(function () {
-    svgSprite();
-    animate.init();
-});
