@@ -2,8 +2,13 @@
   position absolute
   top 50%
   transform translateY(-50%)
-  //width 3840px
   white-space nowrap
+
+.title__list
+  position relative
+  left 0
+  transform translateX(0)
+  transition left 1s cubic-bezier(.75,0,.25,1)
 
 .title__item
   float left
@@ -13,5 +18,9 @@
   position relative
   left 25%
   text-transform lowercase
+  font-weight 100
   font-size 7vw
   color white
+
+  +below(w1440)
+    font-size 6vw

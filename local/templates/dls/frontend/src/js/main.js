@@ -129,8 +129,8 @@ var animate = {
     },
 
     carousel:function () {
-        var title      = $('.title'),
-            titleItem  = title.find('.title__item'),
+        var title       = $('.title'),
+            titleItem   = title.find('.title__item'),
             titleWidth  = 0;
 
         titleItem.each(function () {
@@ -138,17 +138,38 @@ var animate = {
         });
         title.width(titleWidth);
 
-        var next = $('.s-arrow--next'),
-            prev = $('.s-arrow--prev');
 
-        next.on('click', function (e) {
+        $('.js-arrow').on('click', function (e) {
             e.preventDefault();
-            console.log('next');
+
+            var $this         = $(this),
+                container     = $this.closest('.slideshow-over'),
+                titleList     = container.find('.title__list'),
+                title         = container.find('.title__item'),
+                currentTitle = title.filter('.current'),
+                nextTitle     = currentTitle.next(),
+                prevTitle     = currentTitle.prev(),
+                sliderOffset  = container.offset().left,
+                reqPost       = 0;
+
+
+
+            if($this.hasClass('s-arrow--next')) {
+                console.log('next+');
+
+                reqPost = nextTitle.offset().left - sliderOffset;
+                nextTitle.addClass('current').siblings().removeClass('current');
+
+            } else {
+                console.log('prev+');
+
+                reqPost = prevTitle.offset().left - sliderOffset;
+                prevTitle.addClass('current').siblings().removeClass('current');
+            }
+
+            titleList.css('left', '-=' + reqPost + 'px');
+
         });
 
-        prev.on('click', function (e) {
-            e.preventDefault();
-            console.log('prev');
-        });
     }
 };
