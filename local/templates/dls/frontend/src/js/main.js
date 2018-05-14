@@ -129,14 +129,20 @@ var animate = {
     },
 
     carousel:function () {
-        var title       = $('.title'),
-            titleItem   = title.find('.title__item'),
-            titleWidth  = 0;
+        var title      = $('.title'),
+            titleItem  = title.find('.title__item'),
+            convas     = $('.convas__list'),
+            width      = 0;
 
         titleItem.each(function () {
-            titleWidth+=$(this).width();
+            width+=$(this).width();
         });
-        title.width(titleWidth);
+        title.width(width);
+        convas.width(width);
+
+        var arrow = $('.s-arrow'),
+            arrowPrev = $('.s-arrow--prev'),
+            arrowNext = $('.s-arrow--next');
 
 
         $('.js-arrow').on('click', function (e) {
@@ -144,6 +150,8 @@ var animate = {
 
             var $this         = $(this),
                 container     = $this.closest('.slideshow-over'),
+                convasList    = container.find('.convas__list'),
+                contentList   = container.find('.content__list'),
                 titleList     = container.find('.title__list'),
                 title         = container.find('.title__item'),
                 currentTitle = title.filter('.current'),
@@ -151,8 +159,6 @@ var animate = {
                 prevTitle     = currentTitle.prev(),
                 sliderOffset  = container.offset().left,
                 reqPost       = 0;
-
-
 
             if($this.hasClass('s-arrow--next')) {
                 console.log('next+');
@@ -168,6 +174,8 @@ var animate = {
             }
 
             titleList.css('left', '-=' + reqPost + 'px');
+            convasList.css('left', '-=' + reqPost + 'px');
+            contentList.css('left', '-=' + reqPost + 'px');
 
         });
 

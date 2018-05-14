@@ -29,8 +29,18 @@
 
 .content
   padding-top 20vh
+  overflow hidden
+  
+.content__list
+  position: relative
+  left 0
+
+.content__item
+  display: none
+  &.current
+    display block
 
 .content__title
   margin 0
-  font-size 7vw
+  font-size 6vw
   color black
