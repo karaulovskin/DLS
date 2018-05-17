@@ -154,21 +154,17 @@ var animate = {
                 contentList   = container.find('.content__list'),
                 titleList     = container.find('.title__list'),
                 title         = container.find('.title__item'),
-                currentTitle = title.filter('.current'),
+                currentTitle  = title.filter('.current'),
                 nextTitle     = currentTitle.next(),
                 prevTitle     = currentTitle.prev(),
                 sliderOffset  = container.offset().left,
                 reqPost       = 0;
 
             if($this.hasClass('s-arrow--next')) {
-                console.log('next+');
-
                 reqPost = nextTitle.offset().left - sliderOffset;
                 nextTitle.addClass('current').siblings().removeClass('current');
 
             } else {
-                console.log('prev+');
-
                 reqPost = prevTitle.offset().left - sliderOffset;
                 prevTitle.addClass('current').siblings().removeClass('current');
             }
@@ -179,5 +175,38 @@ var animate = {
 
         });
 
+        $('.js-menu__link').on('click', function(e) {
+            e.preventDefault();
+
+            var $this         = $(this),
+                container     = $this.closest('.slideshow-over'),
+                convasList    = container.find('.convas__list'),
+                contentList   = container.find('.content__list'),
+                titleList     = container.find('.title__list'),
+                title         = container.find('.title__item'),
+                currentTitle  = title.filter('.current'),
+                nextTitle     = currentTitle.next(),
+                prevTitle     = currentTitle.prev(),
+                reqPost       = 0,
+                menu      = $('.js-menu'),
+                burger    = $('.js-burger'),
+                slideshow = $('.slideshow');
+
+            if ($(this).closest('.menu__item').hasClass('current'))
+                return false;
+
+            $('.js-menu__link').closest('.menu__item').removeClass('current');
+            $this.closest('.menu__item').addClass('current');
+
+            console.log('.title__item[data-id="' + $this.data('id') + '"]');
+
+            $('.content__item').removeClass('current');
+            $('.content__item[data-id="' + $this.data('id') + '"]').addClass('current');
+
+            menu.removeClass('is-opend');
+            burger.removeClass('is-closed');
+            slideshow.removeClass('is-down');
+
+        });
     }
 };
