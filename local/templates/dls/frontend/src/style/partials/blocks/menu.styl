@@ -11,9 +11,9 @@
     transform translateY(0)
     .menu__wrapp
       transform translateY(0)
-    .menu__lift
+    .menu-left
       transform translateY(0)
-    .menu__list
+    .menu-left__list
       display block
 
 .menu__wrapp
@@ -22,7 +22,7 @@
   transform translateY(100%)
   transition: transform 1s cubic-bezier(0.75, 0, 0.25, 1);
 
-.menu__lift
+.menu-left
   display flex
   flex-direction column
   justify-content center
@@ -31,18 +31,18 @@
   transform translateY(-10%)
   transition: transform 1s cubic-bezier(0.75, 0, 0.25, 1);
 
-.menu__item
+.menu-left__item
   &:hover
-    .menu__link
+    .menu-left__link
       opacity 1
 
   &.current
-    .menu__link
+    .menu-left__link
       opacity 1
       &:before
         display: block
 
-.menu__link
+.menu-left__link
   position: relative
   display block
   height 6vh
@@ -83,3 +83,28 @@
     &:before
       left 30px
       width 40px
+      
+.menu-bottom
+  position absolute
+  bottom 0
+  left 0
+  right 0
+
+.menu-bottom__list
+  display: flex
+  position absolute
+  bottom 90px
+  left 25%
+
+.menu-bottom__item
+  margin-left 30px
+  &:first-child
+    margin-left 0
+
+.menu-bottom__link
+  display inline-block
+  padding 10px
+  letter-spacing 0.02em
+  font-size 14px
+  font-weight 700
+  color white

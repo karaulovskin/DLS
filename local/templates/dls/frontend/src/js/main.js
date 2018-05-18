@@ -77,6 +77,7 @@ var animate = {
 
     menu:function () {
         var menu      = $('.js-menu'),
+            body      = $('body'),
             burger    = $('.js-burger'),
             slideshow = $('.slideshow');
 
@@ -87,28 +88,32 @@ var animate = {
                 menu.addClass('is-opend');
                 burger.addClass('is-closed');
                 slideshow.addClass('is-down');
+                body.addClass('hidden');
             } else {
                 menu.removeClass('is-opend');
                 burger.removeClass('is-closed');
                 slideshow.removeClass('is-down');
+                body.removeClass('hidden');
             }
         });
     },
 
     greet:function () {
-        var animated = $('.is-animated'),
-            greet    = $('.greet'),
-            greetGo  = $('.greet-go'),
-            logo     = $('.logo'),
+        var animated  = $('.is-animated'),
+            greet     = $('.greet'),
+            greetGo   = $('.greet-go'),
+            logo      = $('.logo'),
             menu      = $('.js-menu'),
             burger    = $('.js-burger'),
-            slideshow = $('.slideshow');
+            slideshow = $('.slideshow'),
+            body      = $('body');
 
         $('.greet-go').on('click', function (e) {
             e.preventDefault();
 
             if(!greet.hasClass('step-3')) {
                 greet.addClass('step-3');
+                body
                 // greetGo.hide();
             }
         });
@@ -179,6 +184,7 @@ var animate = {
             e.preventDefault();
 
             var $this         = $(this),
+                body          = $('body'),
                 container     = $this.closest('.slideshow-over'),
                 convasList    = container.find('.convas__list'),
                 contentList   = container.find('.content__list'),
@@ -194,6 +200,11 @@ var animate = {
 
             if ($(this).closest('.menu__item').hasClass('current'))
                 return false;
+
+            if(!$('.greet').hasClass('step-3'))
+                $('.greet').addClass('step-3');
+
+            body.removeClass('hidden');
 
             $('.js-menu__link').closest('.menu__item').removeClass('current');
             $this.closest('.menu__item').addClass('current');
