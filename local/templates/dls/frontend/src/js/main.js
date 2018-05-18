@@ -113,7 +113,7 @@ var animate = {
 
             if(!greet.hasClass('step-3')) {
                 greet.addClass('step-3');
-                body
+                body.removeClass('hidden');
                 // greetGo.hide();
             }
         });
@@ -123,6 +123,7 @@ var animate = {
 
             if(greet.hasClass('step-3')) {
                 greet.removeClass('step-3');
+                body.addClass('hidden');
                 // greetGo.hide();
             }
             if(menu.hasClass('is-opend')) {
@@ -208,8 +209,6 @@ var animate = {
 
             $('.js-menu__link').closest('.menu__item').removeClass('current');
             $this.closest('.menu__item').addClass('current');
-
-            console.log('.title__item[data-id="' + $this.data('id') + '"]');
 
             $('.content__item').removeClass('current');
             $('.content__item[data-id="' + $this.data('id') + '"]').addClass('current');

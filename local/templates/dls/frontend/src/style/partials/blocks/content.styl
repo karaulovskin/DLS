@@ -4,7 +4,6 @@
   left 0
   right 465px
   min-height 100vh
-  height 1000px
   padding 0 10%
   background-color white
   transform translateY(100vh)
@@ -28,7 +27,8 @@
     right 105px
 
 .content
-  padding-top 20vh
+  padding 20vh 0
+  color #636363
   overflow hidden
   
 .content__list
@@ -42,5 +42,49 @@
 
 .content__title
   margin 0
+  margin-bottom 1em
   font-size 6vw
+  line-height 1.2em
   color black
+
+  +below(w1024)
+    margin-bottom 0.8em
+
+.content__desc p
+  margin-bottom 2em
+  line-height 2em
+  font-size 1rem
+
+.content__desc-row
+  display flex
+  margin 0 -2%
+
+.content__desc-col
+  width 50%
+  padding 0 2%
+
+.content__link-over
+  text-align right
+  text-align left
+
+.content__link
+  display: inline-block
+  padding 30px
+  font-weight 500
+  letter-spacing 0.02em
+  color #636363
+  border 1px solid
+  border-color rgba(0, 0, 0, .1)
+  transition .15s
+
+  &:hover
+    border-color rgba(0, 0, 0, .25)
+
+  +below(w1024)
+    padding 30px 25px 28px 25px
+  +below(w1024)
+    padding 15px 15px 12px 15px
+  
+.content__link-span--red
+  margin-left 20px
+  color #9f2013
