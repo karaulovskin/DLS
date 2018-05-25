@@ -7,6 +7,10 @@
   padding 0 10%
   background-color white
   transform translateY(100vh)
+  transition transform 1s cubic-bezier(.75,0,.25,1)
+  &.content-up
+    transform translateY(0vh)
+
 
   +below(w1600)
     right 405px
@@ -27,7 +31,7 @@
     right 105px
 
 .content
-  padding 20vh 0
+  padding 14vh 0
   color #636363
   overflow hidden
   
