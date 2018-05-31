@@ -126,8 +126,8 @@ var animate = {
                 greet.removeClass('step-3');
                 body.addClass('hidden');
                 // convasList.css('transform', 'translateX(10)');
-                convasList.css('left', '10');
-                convasList.addClass('step');
+                // convasList.css('transform', 'translateX(400px)');
+                // convasList.addClass('step');
             }
             if(menu.hasClass('is-opend')) {
                 menu.removeClass('is-opend');
@@ -160,27 +160,34 @@ var animate = {
             var $this         = $(this),
                 container     = $this.closest('.slideshow-over'),
                 convasList    = container.find('.convas__list'),
-                contentList   = container.find('.content__list'),
                 titleList     = container.find('.title__list'),
                 title         = container.find('.title__item'),
                 currentTitle  = title.filter('.current'),
                 nextTitle     = currentTitle.next(),
                 prevTitle     = currentTitle.prev(),
                 sliderOffset  = container.offset().left,
+                currentContent = $('.content__item.current'),
+                nextContent = currentContent.next(),
+                prevContent = currentContent.prev(),
+                currentMenu = $('.menu-left__item.current'),
+                nextMenu = currentMenu.next(),
+                prevMenu = currentMenu.prev(),
                 reqPost       = 0;
 
             if($this.hasClass('s-arrow--next')) {
                 reqPost = nextTitle.offset().left - sliderOffset;
                 nextTitle.addClass('current').siblings().removeClass('current');
-
+                nextContent.addClass('current').siblings().removeClass('current');
+                nextMenu.addClass('current').siblings().removeClass('current');
             } else {
                 reqPost = prevTitle.offset().left - sliderOffset;
                 prevTitle.addClass('current').siblings().removeClass('current');
+                prevContent.addClass('current').siblings().removeClass('current');
+                prevMenu.addClass('current').siblings().removeClass('current');
             }
 
             titleList.css('left', '-=' + reqPost + 'px');
             convasList.css('left', '-=' + reqPost + 'px');
-            contentList.css('left', '-=' + reqPost + 'px');
 
         });
 
@@ -203,19 +210,23 @@ var animate = {
                 slideshow     = $('.slideshow'),
                 dataId        = $this.data('id');
 
-            if ($(this).closest('.menu__item').hasClass('current'))
+            if ($(this).closest('.menu__item').hasClass('current')) {
                 return false;
+            }
 
-            if(!$('.greet').hasClass('step-3'))
+            if(!$('.greet').hasClass('step-3')) {
                 $('.greet').addClass('step-3');
+            }
 
             body.removeClass('hidden');
 
-            $('.js-menu__link').closest('.menu__item').removeClass('current');
-            $this.closest('.menu__item').addClass('current');
+            $('.js-menu__link').closest('.menu-left__item').removeClass('current');
+            $this.closest('.menu-left__item').addClass('current');
 
             $('.content__item').removeClass('current');
+            $('.convas__item').removeClass('current');
             $('.content__item[data-id="' + $this.data('id') + '"]').addClass('current');
+            $('.convas__item[data-id="' + $this.data('id') + '"]').addClass('current');
 
             menu.removeClass('is-opend');
             burger.removeClass('is-closed');
