@@ -224,8 +224,10 @@ var animate = {
             $this.closest('.menu-left__item').addClass('current');
 
             $('.content__item').removeClass('current');
+            $('.title__item').removeClass('current');
             $('.convas__item').removeClass('current');
             $('.content__item[data-id="' + $this.data('id') + '"]').addClass('current');
+            $('.title__item[data-id="' + $this.data('id') + '"]').addClass('current');
             $('.convas__item[data-id="' + $this.data('id') + '"]').addClass('current');
 
             menu.removeClass('is-opend');
@@ -235,6 +237,45 @@ var animate = {
             if(dataId === 'about') {
                 $('.content-over').addClass('content-up');
             }
+
+            var $this                = $(this),
+                menuContainer        = $('.menu-left__list'),
+                menuItem             = menuContainer.find('.menu-left__item'),
+                menuItemCurrent      = menuContainer.find('.menu-left__item.current'),
+                menuItemCurrentNext  = menuItemCurrent.next(),
+                menuItemCurrentPrev  = menuItemCurrent.prev(),
+
+                container            = $('.slideshow-over'),
+                convasList           = container.find('.convas__list'),
+                titleList            = container.find('.title__list'),
+                title                = container.find('.title__item'),
+                currentTitle         = title.filter('.current'),
+                nextTitle            = currentTitle.next(),
+                prevTitle            = currentTitle.prev(),
+                sliderOffset         = container.offset().left,
+                currentContent       = $('.content__item.current'),
+                nextContent          = currentContent.next(),
+                prevContent          = currentContent.prev(),
+                currentMenu          = $('.menu-left__item.current'),
+                nextMenu             = currentMenu.next(),
+                prevMenu             = currentMenu.prev(),
+                reqPost              = 0;
+
+
+            if(menuItemCurrent.next().length) {
+                reqPost = nextTitle.offset().left - sliderOffset;
+                nextTitle.addClass('current').siblings().removeClass('current');
+                nextContent.addClass('current').siblings().removeClass('current');
+                nextMenu.addClass('current').siblings().removeClass('current');
+            } else {
+                reqPost = prevTitle.offset().left - sliderOffset;
+                prevTitle.addClass('current').siblings().removeClass('current');
+                prevContent.addClass('current').siblings().removeClass('current');
+                prevMenu.addClass('current').siblings().removeClass('current');
+            }
+
+            titleList.css('left', '-=' + reqPost + 'px');
+            convasList.css('left', '-=' + reqPost + 'px');
 
         });
 
