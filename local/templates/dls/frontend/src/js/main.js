@@ -138,13 +138,13 @@ var animate = {
     },
 
     carousel:function () {
-        var title      = $('.title'),
-            titleItem  = title.find('.title__item'),
-            convas     = $('.convas__list'),
-            width      = 0;
+        var title = $('.title'),
+            titleItem = title.find('.title__item'),
+            convas = $('.convas__list'),
+            width = 0;
 
         titleItem.each(function () {
-            width+=$(this).width();
+            width += $(this).width();
         });
         title.width(width);
         convas.width(width);
@@ -157,24 +157,24 @@ var animate = {
         $('.js-arrow').on('click', function (e) {
             e.preventDefault();
 
-            var $this         = $(this),
-                container     = $this.closest('.slideshow-over'),
-                convasList    = container.find('.convas__list'),
-                titleList     = container.find('.title__list'),
-                title         = container.find('.title__item'),
-                currentTitle  = title.filter('.current'),
-                nextTitle     = currentTitle.next(),
-                prevTitle     = currentTitle.prev(),
-                sliderOffset  = container.offset().left,
+            var $this = $(this),
+                container = $this.closest('.slideshow-over'),
+                convasList = container.find('.convas__list'),
+                titleList = container.find('.title__list'),
+                title = container.find('.title__item'),
+                currentTitle = title.filter('.current'),
+                nextTitle = currentTitle.next(),
+                prevTitle = currentTitle.prev(),
+                sliderOffset = container.offset().left,
                 currentContent = $('.content__item.current'),
                 nextContent = currentContent.next(),
                 prevContent = currentContent.prev(),
                 currentMenu = $('.menu-left__item.current'),
                 nextMenu = currentMenu.next(),
                 prevMenu = currentMenu.prev(),
-                reqPost       = 0;
+                reqPost = 0;
 
-            if($this.hasClass('s-arrow--next')) {
+            if ($this.hasClass('s-arrow--next')) {
                 reqPost = nextTitle.offset().left - sliderOffset;
                 nextTitle.addClass('current').siblings().removeClass('current');
                 nextContent.addClass('current').siblings().removeClass('current');
@@ -191,30 +191,30 @@ var animate = {
 
         });
 
-        $('.js-menu__link').on('click', function(e) {
+        $('.js-menu__link').on('click', function (e) {
             e.preventDefault();
 
-            var $this         = $(this),
-                body          = $('body'),
-                container     = $this.closest('.slideshow-over'),
-                convasList    = container.find('.convas__list'),
-                contentList   = container.find('.content__list'),
-                titleList     = container.find('.title__list'),
-                title         = container.find('.title__item'),
-                currentTitle  = title.filter('.current'),
-                nextTitle     = currentTitle.next(),
-                prevTitle     = currentTitle.prev(),
-                reqPost       = 0,
-                menu          = $('.js-menu'),
-                burger        = $('.js-burger'),
-                slideshow     = $('.slideshow'),
-                dataId        = $this.data('id');
+            var $this = $(this),
+                body = $('body'),
+                container = $this.closest('.slideshow-over'),
+                convasList = container.find('.convas__list'),
+                contentList = container.find('.content__list'),
+                titleList = container.find('.title__list'),
+                title = container.find('.title__item'),
+                currentTitle = title.filter('.current'),
+                nextTitle = currentTitle.next(),
+                prevTitle = currentTitle.prev(),
+                reqPost = 0,
+                menu = $('.js-menu'),
+                burger = $('.js-burger'),
+                slideshow = $('.slideshow'),
+                dataId = $this.data('id');
 
             if ($(this).closest('.menu__item').hasClass('current')) {
                 return false;
             }
 
-            if(!$('.greet').hasClass('step-3')) {
+            if (!$('.greet').hasClass('step-3')) {
                 $('.greet').addClass('step-3');
             }
 
@@ -234,35 +234,35 @@ var animate = {
             burger.removeClass('is-closed');
             slideshow.removeClass('is-down');
 
-            if(dataId === 'about') {
+            if (dataId === 'about') {
                 $('.content-over').addClass('content-up');
             }
 
-            var $this                = $(this),
-                menuContainer        = $('.menu-left__list'),
-                menuItem             = menuContainer.find('.menu-left__item'),
-                menuItemCurrent      = menuContainer.find('.menu-left__item.current'),
-                menuItemCurrentNext  = menuItemCurrent.next(),
-                menuItemCurrentPrev  = menuItemCurrent.prev(),
+            var $this = $(this),
+                menuContainer = $('.menu-left__list'),
+                menuItem = menuContainer.find('.menu-left__item'),
+                menuItemCurrent = menuContainer.find('.menu-left__item.current'),
+                menuItemCurrentNext = menuItemCurrent.next(),
+                menuItemCurrentPrev = menuItemCurrent.prev(),
 
-                container            = $('.slideshow-over'),
-                convasList           = container.find('.convas__list'),
-                titleList            = container.find('.title__list'),
-                title                = container.find('.title__item'),
-                currentTitle         = title.filter('.current'),
-                nextTitle            = currentTitle.next(),
-                prevTitle            = currentTitle.prev(),
-                sliderOffset         = container.offset().left,
-                currentContent       = $('.content__item.current'),
-                nextContent          = currentContent.next(),
-                prevContent          = currentContent.prev(),
-                currentMenu          = $('.menu-left__item.current'),
-                nextMenu             = currentMenu.next(),
-                prevMenu             = currentMenu.prev(),
-                reqPost              = 0;
+                container = $('.slideshow-over'),
+                convasList = container.find('.convas__list'),
+                titleList = container.find('.title__list'),
+                title = container.find('.title__item'),
+                currentTitle = title.filter('.current'),
+                nextTitle = currentTitle.next(),
+                prevTitle = currentTitle.prev(),
+                sliderOffset = container.offset().left,
+                currentContent = $('.content__item.current'),
+                nextContent = currentContent.next(),
+                prevContent = currentContent.prev(),
+                currentMenu = $('.menu-left__item.current'),
+                nextMenu = currentMenu.next(),
+                prevMenu = currentMenu.prev(),
+                reqPost = 0;
 
 
-            if(menuItemCurrent.next().length) {
+            if (menuItemCurrent.next().length) {
                 reqPost = nextTitle.offset().left - sliderOffset;
                 nextTitle.addClass('current').siblings().removeClass('current');
                 nextContent.addClass('current').siblings().removeClass('current');
@@ -279,9 +279,15 @@ var animate = {
 
         });
 
-        $('.js-close').on('click', function(e) {
+        $('.js-close').on('click', function (e) {
             e.preventDefault();
             $('.content-over').removeClass('content-up');
+        });
+
+        $('.convas__item').each(function () {
+            var $this = $(this),
+                leftEdge = $this.offset().left,
+                rightEdge = leftEdge + $this.width();
         });
     }
 };
